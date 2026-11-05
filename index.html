@@ -1,57 +1,1006 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teks Berjalan Besar</title>
+    <title>TR BOUQUET — Premium Floral & Gift Artisan</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-rose: #be123c;
+            --primary-accent: #e11d48;
+            --rose-light: #fff1f2;
+            --rose-soft: #fecdd3;
+            --dark-heading: #0f172a;
+            --text-body: #475569;
+            --text-muted: #64748b;
+            --bg-body: #fafafa;
+            --white: #ffffff;
+            --border-color: #f1f5f9;
+            --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+            --shadow-md: 0 12px 24px -4px rgba(15, 23, 42, 0.06);
+            --shadow-lg: 0 20px 32px -8px rgba(225, 29, 72, 0.12);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: black;
-            height: 100vh;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            background-color: var(--bg-body);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Navigation Header --- */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
+            height: 80px;
         }
 
-        .teks-berjalan {
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--dark-heading);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .logo span {
+            color: var(--primary-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-body);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active-link {
+            color: var(--primary-accent);
+        }
+
+        /* --- Buttons --- */
+        .btn-primary, .btn-secondary, .btn-sm {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 26px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-accent);
+            color: var(--white) !important;
+            box-shadow: 0 4px 14px rgba(225, 29, 72, 0.25);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-rose);
+            box-shadow: 0 6px 20px rgba(190, 18, 60, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--dark-heading);
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--rose-light);
+            border-color: var(--rose-soft);
+            color: var(--primary-rose);
+            transform: translateY(-2px);
+        }
+
+        .btn-sm {
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            background-color: var(--dark-heading);
+            color: var(--white);
+        }
+
+        .btn-sm:hover {
+            background-color: var(--primary-accent);
+        }
+
+        /* --- Views System --- */
+        .view-section {
+            display: none;
+            min-height: 75vh;
+            padding: 40px 0;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        /* --- Sections Style (Beranda Scrollable Sections) --- */
+        .home-section {
+            padding: 70px 0;
+        }
+
+        .home-section-alt {
+            background-color: var(--white);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero {
+            padding: 60px 0;
+            background: radial-gradient(circle at 50% 0%, #fff1f2 0%, #fafafa 70%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .badge {
+            background-color: var(--white);
+            color: var(--primary-accent);
+            border: 1px solid var(--rose-soft);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--dark-heading);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-body);
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 4px solid var(--white);
+        }
+
+        .hero-image-wrapper img {
             width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Text Block Grid Section */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--dark-heading);
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin-bottom: 40px;
+        }
+
+        .text-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .text-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .text-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-heading);
+            margin-bottom: 12px;
+        }
+
+        .text-card p {
+            font-size: 0.95rem;
+            color: var(--text-body);
+        }
+
+        /* Process Steps Section */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .step-box {
+            background: var(--bg-body);
+            padding: 28px 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .step-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--rose-soft);
+            margin-bottom: 12px;
+        }
+
+        .step-box h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark-heading);
+            margin-bottom: 8px;
+        }
+
+        .step-box p {
+            font-size: 0.9rem;
+            color: var(--text-body);
+        }
+
+        /* Testimonials Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 28px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stars {
+            color: #f59e0b;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .review-card p {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--text-body);
+            margin-bottom: 16px;
+        }
+
+        .review-author {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--dark-heading);
+        }
+
+        /* Banner CTA Section */
+        .banner-cta {
+            background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+            padding: 60px 32px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--rose-soft);
+            text-align: center;
+        }
+
+        .banner-cta h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark-heading);
+            margin-bottom: 12px;
+        }
+
+        .banner-cta p {
+            font-size: 1.05rem;
+            color: var(--text-body);
+            max-width: 600px;
+            margin: 0 auto 28px;
+        }
+
+        /* --- Catalog Section --- */
+        .catalog-container {
+            padding: 20px 0;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 28px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
             overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
-        .teks-berjalan h1 {
-            color: white;
-            font-size: 80px;
-            font-weight: bold;
-            white-space: nowrap;
-            animation: berjalan 10s linear infinite;
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--rose-soft);
         }
 
-        @keyframes berjalan {
-            from {
-                transform: translateX(100vw);
+        .card-img {
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+            background-color: var(--rose-light);
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--primary-accent);
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .card-body h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark-heading);
+            margin-bottom: 8px;
+        }
+
+        .card-body p {
+            font-size: 0.9rem;
+            color: var(--text-body);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+        }
+
+        .price {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-heading);
+        }
+
+        /* --- About Section --- */
+        .about-container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .features-grid {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .features-grid li {
+            background-color: var(--white);
+            padding: 28px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .features-grid li:hover {
+            border-color: var(--rose-soft);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .features-grid strong {
+            color: var(--dark-heading);
+            display: block;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        /* --- Consult Form View --- */
+        .consult-wrapper {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .consult-card {
+            background: var(--white);
+            padding: 48px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .consult-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .consult-header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark-heading);
+            margin-bottom: 8px;
+        }
+
+        .consult-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            color: var(--dark-heading);
+            font-size: 0.925rem;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--dark-heading);
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px;
+            border-radius: 50px;
+            background-color: #10b981;
+            color: var(--white);
+            border: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px -4px rgba(16, 185, 129, 0.3);
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-heading);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 32px 0;
+            font-size: 0.9rem;
+            border-top: 1px solid #1e293b;
+        }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
 
-            to {
-                transform: translateX(-100%);
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                height: auto;
+                padding: 16px;
+                gap: 16px;
+            }
+
+            .nav-links {
+                gap: 16px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .consult-card {
+                padding: 36px 20px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="teks-berjalan">
-        <h1>MAAF SEDANG DI RENOVASI</h1>
-    </div>
+    <!-- Header & Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a onclick="switchView('beranda')" class="logo">TR<span>BOUQUET</span> 🌸</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a id="nav-beranda" onclick="switchView('beranda')" class="active-link">Beranda</a></li>
+                    <li><a id="nav-katalog" onclick="switchView('katalog')">Katalog</a></li>
+                    <li><a id="nav-keunggulan" onclick="switchView('keunggulan')">Keunggulan</a></li>
+                    <li><a onclick="switchView('consult')" class="btn-primary">Konsultasi Desain</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- TAB 1: BERANDA (LENGKAP BISA DI-SCROLL PANJANG) -->
+    <section id="view-beranda" class="view-section active">
+        <!-- Main Hero -->
+        <div class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <span class="badge">✨ Handmade Floral & Gift Artisan</span>
+                        <h1>Rangkaian Buket Premium untuk Setiap Momen Berharga</h1>
+                        <p>Selamat datang di TR BOUQUET. Kami menghadirkan kreasi buket bunga segar, buket uang eksklusif, hingga rangkaian kustom penuh kehangatan yang dirancang khusus untuk menyampaikan perasaan terdalam Anda di setiap momen spesial.</p>
+                        <div class="hero-buttons">
+                            <button onclick="switchView('katalog')" class="btn-primary">Jelajahi Katalog</button>
+                            <button onclick="switchView('consult')" class="btn-secondary">Konsultasi Desain</button>
+                        </div>
+                    </div>
+                    <div class="hero-image-wrapper">
+                        <img src="1.jpeg" alt="TR Bouquet Hero">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1: Philosophy & Story -->
+        <div class="home-section home-section-alt">
+            <div class="container">
+                <h2 class="section-title">Seni Merangkai Kebahagiaan</h2>
+                <p class="section-subtitle">Di TR BOUQUET, kami percaya bahwa setiap buket bukan sekadar hadiah biasa, melainkan ungkapan rasa cinta, apresiasi, dan ketulusan.</p>
+                <div class="text-grid-3">
+                    <div class="text-card">
+                        <h3>🌿 Kesegaran Kualitas Utama</h3>
+                        <p>Setiap tangkai bunga yang kami gunakan dipilih secara cermat dari perkebunan terbaik. Kami memastikan kesegaran bunga tetap terjaga sempurna saat sampai di tangan penerima.</p>
+                    </div>
+                    <div class="text-card">
+                        <h3>🎨 Sentuhan Estetika Kustom</h3>
+                        <p>Setiap detail buket dapat dipersonalisasi. Mulai dari pemilihan variasi warna kertas wrapping, paduan warna pita, hingga susunan bunga yang merefleksikan karakter penerima.</p>
+                    </div>
+                    <div class="text-card">
+                        <h3>✨ Kerapihan Presisi Tinggi</h3>
+                        <p>Dikerjakan oleh artisan buket berpengalaman yang mengutamakan kerapihan simetris, keamanan ikatan uang, hingga pengemasan akhir yang elegan dan aman.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Special Occasions Guide -->
+        <div class="home-section">
+            <div class="container">
+                <h2 class="section-title">Momen Spesial Anda, Rangkaian Terbaik Kami</h2>
+                <p class="section-subtitle">Temukan inspirasi hadiah sempurna yang telah disesuaikan dengan berbagai momen berkesan dalam hidup Anda.</p>
+                <div class="text-grid-3">
+                    <div class="text-card">
+                        <h3>🎓 Kelulusan & Wisuda</h3>
+                        <p>Berikan ucapan selamat atas pencapaian luar biasa dengan paduan buket bunga segar atau buket uang yang dipadukan warna kelulusan favorit sahabat Anda.</p>
+                    </div>
+                    <div class="text-card">
+                        <h3>💍 Pernikahan & Anniversary</h3>
+                        <p>Ungkapkan kasih sayang mendalam pada pasangan menggunakan mawar merah premium yang melambangkan keabadian dan ketulusan cinta.</p>
+                    </div>
+                    <div class="text-card">
+                        <h3>🎂 Ulang Tahun & Kejutan Spesial</h3>
+                        <p>Buat hari kelahiran teman dan keluarga menjadi tak terlupakan melalui buket cokelat manis dan rangkaian uang unik sesuai usia perayaan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Simple Order Process -->
+        <div class="home-section home-section-alt">
+            <div class="container">
+                <h2 class="section-title">4 Langkah Mudah Pemesanan</h2>
+                <p class="section-subtitle">Proses praktis untuk mewujudkan buket impian Anda tanpa ribet.</p>
+                <div class="steps-grid">
+                    <div class="step-box">
+                        <div class="step-number">01</div>
+                        <h4>Pilih Kategori</h4>
+                        <p>Jelajahi katalog kami dan pilih jenis buket yang paling sesuai dengan kebutuhan Anda.</p>
+                    </div>
+                    <div class="step-box">
+                        <div class="step-number">02</div>
+                        <h4>Konsultasi Desain</h4>
+                        <p>Isi formulir konsultasi untuk menentukan warna wrapping, tema bunga, dan catatan ucapan.</p>
+                    </div>
+                    <div class="step-box">
+                        <div class="step-number">03</div>
+                        <h4>Konfirmasi via WA</h4>
+                        <p>Tim kami akan mengonfirmasi ketersediaan, perincian harga, dan estimasi waktu pengerjaan.</p>
+                    </div>
+                    <div class="step-box">
+                        <div class="step-number">04</div>
+                        <h4>Pengiriman / Ambil</h4>
+                        <p>Buket siap dikirim langsung ke lokasi tujuan atau siap diambil tepat waktu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Customer Testimonials -->
+        <div class="home-section">
+            <div class="container">
+                <h2 class="section-title">Kata Mereka tentang TR BOUQUET</h2>
+                <p class="section-subtitle">Kepercayaan dan kepuasan pelanggan adalah motivasi terbesar kami dalam berkarya.</p>
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Buket uangnya rapi banget dan bunganya benar-benar segar! Pengerjaannya cepat meski saya pesan mendadak untuk acara wisuda sahabat. Sangat memuaskan!"</p>
+                        <div class="review-author">— Anisa Rahmawati</div>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Kertas wrapping-nya eksklusif dan kombinasi warnanya pas banget sesuai keinginan saya. Pasangan saya suka sekali waktu terima di hari anniversary."</p>
+                        <div class="review-author">— Dimas Pratama</div>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"Pelayanan ramah banget dari awal konsultasi di WhatsApp sampai barang diterima. Kartu ucapannya juga dicetak sangat rapi. Recommended bgt!"</p>
+                        <div class="review-author">— Rizky Febrian</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Call to Action Banner -->
+        <div class="home-section">
+            <div class="container">
+                <div class="banner-cta">
+                    <h2>Siap Mempersembahkan Hadiah Terbaik?</h2>
+                    <p>Konsultasikan ide buket kustom Anda sekarang juga bersama tim artisan TR BOUQUET.</p>
+                    <button onclick="switchView('consult')" class="btn-primary" style="padding: 16px 36px; font-size: 1.05rem;">
+                        ✨ Mulai Konsultasi Desain Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 2: KATALOG -->
+    <section id="view-katalog" class="view-section">
+        <div class="container catalog-container">
+            <div class="section-header">
+                <h2>Katalog Pilihan</h2>
+                <p>Temukan ide buket terbaik yang dirancang khusus dengan detail presisi</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <article class="card">
+                    <div class="card-img">
+                        <img src="1.jpeg" alt="Fresh Rose Bouquet">
+                    </div>
+                    <div class="card-body">
+                        <span class="category">Fresh Flower</span>
+                        <h3>Fresh Rose Bouquet</h3>
+                        <p>Mawar segar kualitas ekspor dengan penataan estetis dan kertas balut premium anti-air.</p>
+                        <div class="card-footer">
+                            <span class="price">Rp 150.000</span>
+                            <button onclick="switchView('consult', 'Fresh Rose Bouquet')" class="btn-sm">Pesan</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="card">
+                    <div class="card-img">
+                        <img src="2.jpeg" alt="Classic Money Bouquet">
+                    </div>
+                    <div class="card-body">
+                        <span class="category">Money Bouquet</span>
+                        <h3>Classic Money Bouquet</h3>
+                        <p>Rangkaian buket uang rapi dan aman. Bebas menentukan nominal uang serta warna tema buket.</p>
+                        <div class="card-footer">
+                            <span class="price">Mulai Rp 100.000</span>
+                            <button onclick="switchView('consult', 'Classic Money Bouquet')" class="btn-sm">Pesan</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="card">
+                    <div class="card-img">
+                        <img src="3.jpeg" alt="Sweet Snack Bouquet">
+                    </div>
+                    <div class="card-body">
+                        <span class="category">Snack & Gift</span>
+                        <h3>Sweet Snack Bouquet</h3>
+                        <p>Perpaduan cokelat impor dan kudapan favorit, dihias cantik untuk kejutan manis teman dan keluarga.</p>
+                        <div class="card-footer">
+                            <span class="price">Rp 85.000</span>
+                            <button onclick="switchView('consult', 'Sweet Snack Bouquet')" class="btn-sm">Pesan</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="card">
+                    <div class="card-img">
+                        <img src="4.jpeg" alt="Special Edition Bouquet">
+                    </div>
+                    <div class="card-body">
+                        <span class="category">Custom Gift</span>
+                        <h3>Special Edition Bouquet</h3>
+                        <p>Kombinasi eksklusif bunga dan hadiah pilihan untuk momen kelulusan dan hari istimewa.</p>
+                        <div class="card-footer">
+                            <span class="price">Rp 175.000</span>
+                            <button onclick="switchView('consult', 'Special Edition Bouquet')" class="btn-sm">Pesan</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 3: KEUNGGULAN -->
+    <section id="view-keunggulan" class="view-section">
+        <div class="container about-container">
+            <div class="section-header">
+                <h2>Mengapa Memilih TR BOUQUET?</h2>
+                <p>Komitmen kami dalam memberikan kualitas terbaik di setiap rangkaian</p>
+            </div>
+            <ul class="features-grid">
+                <li>
+                    <strong>🎨 Desain Kustom Sepenuhnya</strong>
+                    Bebas menyesuaikan warna wrapping, pita, hingga komposisi isi buket sesuai permintaan dan tema acara Anda.
+                </li>
+                <li>
+                    <strong>🌿 Bahan Berkualitas Tinggi</strong>
+                    Hanya menggunakan bunga segar pilihan serta bahan kemasan kelas premium yang tahan lama.
+                </li>
+                <li>
+                    <strong>⚡ Layanan Cepat (Express)</strong>
+                    Menerima pesanan mendadak (Same-day Delivery) tanpa mengurangi kualitas kerapihan dan detail.
+                </li>
+                <li>
+                    <strong>💌 Gratis Kartu Ucapan Premium</strong>
+                    Setiap pemesanan sudah termasuk kartu ucapan dicetak rapi dengan pesan personal Anda.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- TAB 4: KONSULTASI / PEMESANAN -->
+    <section id="view-consult" class="view-section">
+        <div class="container consult-wrapper">
+            <div class="consult-card">
+                <div class="consult-header">
+                    <h1>Formulir Konsultasi Desain</h1>
+                    <p>Isi detail di bawah ini agar kami dapat merancang buket impian Anda dengan cepat.</p>
+                </div>
+
+                <form id="consultForm" onsubmit="sendToWhatsApp(event)">
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap</label>
+                        <input type="text" id="nama" class="form-control" placeholder="Contoh: Siska Amelia" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="kategori">Pilihan Kategori / Jenis Buket</label>
+                        <select id="kategori" class="form-control" required>
+                            <option value="">Pilih Kategori...</option>
+                            <option value="Fresh Rose Bouquet">Fresh Rose Bouquet (Bunga Segar)</option>
+                            <option value="Classic Money Bouquet">Classic Money Bouquet (Buket Uang)</option>
+                            <option value="Sweet Snack Bouquet">Sweet Snack Bouquet (Buket Snack)</option>
+                            <option value="Special Edition Bouquet">Special Edition Bouquet (Custom Gift)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="warna">Tema Warna & Nuansa</label>
+                        <input type="text" id="warna" class="form-control" placeholder="Contoh: Nuansa pink pastel, pita putih" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tanggal">Tanggal Acara / Pengambilan</label>
+                        <input type="date" id="tanggal" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="catatan">Catatan / Pesan Khusus (Opsional)</label>
+                        <textarea id="catatan" class="form-control" placeholder="Tuliskan isi kartu ucapan atau permintaan khusus lainnya di sini..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <span>💬</span> Lanjutkan Konsultasi via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 TR BOUQUET. Crafted for your special moments.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function switchView(viewName, selectedCategory = '') {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active-link'));
+
+            const targetSection = document.getElementById('view-' + viewName);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            const activeNav = document.getElementById('nav-' + viewName);
+            if (activeNav) {
+                activeNav.classList.add('active-link');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (viewName === 'consult' && selectedCategory) {
+                const selectDropdown = document.getElementById('kategori');
+                selectDropdown.value = selectedCategory;
+            }
+        }
+
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+
+            const nama = document.getElementById('nama').value;
+            const kategori = document.getElementById('kategori').value;
+            const warna = document.getElementById('warna').value;
+            const tanggal = document.getElementById('tanggal').value;
+            const catatan = document.getElementById('catatan').value || '-';
+
+            const phone = "6283876226002";
+
+            const message = `Halo TR BOUQUET, saya ingin konsultasi pemesanan buket:%0A%0A` +
+                            `*Nama:* ${nama}%0A` +
+                            `*Kategori:* ${kategori}%0A` +
+                            `*Tema Warna:* ${warna}%0A` +
+                            `*Tanggal Acara:* ${tanggal}%0A` +
+                            `*Catatan/Ucapan:* ${catatan}%0A%0A` +
+                            `Mohon bantuannya untuk detail dan ketersediaannya. Terima kasih!`;
+
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+    </script>
 
 </body>
 </html>
